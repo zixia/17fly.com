@@ -1,0 +1,30 @@
+<!--{if !empty($multipage)}--><div class="pages_btns">$multipage</div><!--{/if}-->
+<div class="searchlist">
+	<h2>{lang search_result}</h2>
+	<table summary="{lang search}" cellspacing="0" cellpadding="0" width="100%">
+		<thead>
+			<tr class="colplural">
+			<td>{lang subject}</td>
+			<!--{loop $optionlist $var}-->
+				<td style="width: 10%">$var</td>
+			<!--{/loop}-->
+			<td style="width: 15%">{lang dateline}</td>
+			</tr>
+		</thead>
+		<!--{if $resultlist}-->
+			<!--{loop $resultlist $tid $value}-->
+				<tr class="{echo swapclass('colplural')}">
+					<td><a href="viewthread.php?tid=$tid" target="_blank">$value['subject']</a></td>
+					<!--{loop $value['option'] $var}-->
+						<td style="width: 10%"><!--{if $var}-->$var<!--{else}-->&nbsp;<!--{/if}--></td>
+					<!--{/loop}-->
+					<td style="width: 15%">$value['dateline']</td>
+				</tr>
+			<!--{/loop}-->
+		<!--{else}-->
+			<tr><td colspan="$colspan">{lang search_nomatch}</td></tr>
+		<!--{/if}-->
+	</table>
+
+</div>
+<!--{if !empty($multipage)}--><div class="pages_btns">$multipage</div><!--{/if}-->
